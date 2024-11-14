@@ -95,39 +95,39 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-    home: Scaffold(
-        appBar: AppBar(
-          actions: <Widget>[
-            TextButton(
-                onPressed: prepareLocaleSpecificCountries,
-                child: const Text('fr-fr'),
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                )),
-            TextButton(
-              onPressed: prepareDefaultCountries,
-              style: TextButton.styleFrom(
-                primary: Colors.white,
-              ),
-              child: const Text('Default'),
+        home: Scaffold(
+            appBar: AppBar(
+              actions: <Widget>[
+                TextButton(
+                    onPressed: prepareLocaleSpecificCountries,
+                    child: const Text('fr-fr'),
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.white,
+                    )),
+                TextButton(
+                  onPressed: prepareDefaultCountries,
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white,
+                  ),
+                  child: const Text('Default'),
+                ),
+              ],
+              title: const Text('Plugin example app'),
             ),
-          ],
-          title: const Text('Plugin example app'),
-        ),
-        body: _buildListOfCountries()),
-  );
+            body: _buildListOfCountries()),
+      );
 
   Widget _buildListOfCountries() => ListView.builder(
-    itemBuilder: (BuildContext context, int index) {
-      final Country country = countryList[index];
-      return ListTile(
-          title: Text(country.name),
-          subtitle: Text(country.countryCode),
-          onTap: () =>
-          // Test: This will get a country object for a code and optional locale passed in
-          getCountryForCodeWithIdentifier(
-              country.countryCode, 'de-de'));
-    },
-    itemCount: countryList.length,
-  );
+        itemBuilder: (BuildContext context, int index) {
+          final Country country = countryList[index];
+          return ListTile(
+              title: Text(country.name),
+              subtitle: Text(country.countryCode),
+              onTap: () =>
+                  // Test: This will get a country object for a code and optional locale passed in
+                  getCountryForCodeWithIdentifier(
+                      country.countryCode, 'de-de'));
+        },
+        itemCount: countryList.length,
+      );
 }
